@@ -1,0 +1,43 @@
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+
+        String[] line=scan.nextLine().split(", ");
+
+
+        List<Integer> integers = Arrays.stream(line)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+
+
+        List<Integer> join=new ArrayList<>();
+        List<Integer>ascending=new ArrayList<>();
+        integers
+                .stream()
+                .filter(e->e%2==0)
+                .forEach(e->{
+                    ascending.add(e);
+                    join.add(e);
+
+                });
+        System.out.println(join.toString().replaceAll("[\\[\\]]",""));
+        String collect = ascending
+                .stream()
+                .sorted((a, b) -> a - b)
+                .map(e -> e.toString())
+                .collect(Collectors.joining(", "));
+
+        System.out.println(collect);
+
+
+//        System.out.println(ascending.toString().replaceAll("[\\[\\]]",""));
+
+
+
+    }
+}
