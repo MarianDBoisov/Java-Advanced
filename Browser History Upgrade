@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class IntersectionTwoMatrices {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        int m= Integer.parseInt(scan.nextLine());
+        int n= Integer.parseInt(scan.nextLine());
+
+        char[][]firstMatrix=readMatrix(scan,m,n);
+        char[][]secondMatrix=readMatrix(scan,m,n);
+ 
+        for (int row = 0; row < firstMatrix.length; row++) {
+            for (int i = 0; i < firstMatrix[row].length; i++) {
+                int firstEl=firstMatrix[row][i];
+                int SecondEl=secondMatrix[row][i];
+                if(firstEl!=SecondEl){
+                    System.out.print("* ");
+                }else{
+                    System.out.print((char) firstEl+" ");
+                }
+            }
+            System.out.println();
+
+        }
+
+    }
+
+    private static char[][] readMatrix(Scanner scan, int m, int n) {
+        char[][]Matrix=new char[m][n];
+        for (int row = 0; row < Matrix.length; row++) {
+            String[] line=scan.nextLine().split(" ");
+            for (int cow = 0; cow < Matrix[row].length; cow++) {
+
+                Matrix[row][cow]=line[cow].charAt(0);
+            }
+        }
+        
+        return Matrix;
+    }
+
+
+}
